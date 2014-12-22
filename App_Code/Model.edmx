@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="aptechModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="aptechModelStoreContainer">
+          <EntitySet Name="book_master" EntityType="aptechModel.Store.book_master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="course_master" EntityType="aptechModel.Store.course_master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="module_master" EntityType="aptechModel.Store.module_master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="student_master" EntityType="aptechModel.Store.student_master" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="book_master">
+          <Key>
+            <PropertyRef Name="bcode" />
+          </Key>
+          <Property Name="bcode" Type="varchar" Nullable="false" MaxLength="7" />
+          <Property Name="title" Type="char" MaxLength="100" />
+          <Property Name="qty" Type="int" />
+          <Property Name="ROL" Type="int" />
+        </EntityType>
+        <EntityType Name="course_master">
+          <Key>
+            <PropertyRef Name="ccode" />
+          </Key>
+          <Property Name="ccode" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="cname" Type="char" MaxLength="150" />
+          <Property Name="startdate" Type="date" />
+          <Property Name="duration" Type="int" />
+        </EntityType>
+        <EntityType Name="module_master">
+          <Key>
+            <PropertyRef Name="mcode" />
+          </Key>
+          <Property Name="mcode" Type="varchar" Nullable="false" MaxLength="7" />
+          <Property Name="mname" Type="char" MaxLength="100" />
+          <Property Name="comment" Type="text" />
+        </EntityType>
+        <EntityType Name="student_master">
+          <Key>
+            <PropertyRef Name="scode" />
+          </Key>
+          <Property Name="scode" Type="int" Nullable="false" />
+          <Property Name="sname" Type="char" MaxLength="200" />
+          <Property Name="contact" Type="bigint" />
+          <Property Name="password" Type="varchar" MaxLength="150" />
+          <Property Name="invoiceno" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6013: The table/view 'aptech.dbo.book_module' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity you will need to review your schema, add the correct keys and uncomment it.
+      
+      <EntityType Name="book_module">
+        <Property Name="bcode" Type="varchar" MaxLength="7" />
+        <Property Name="mcode" Type="varchar" MaxLength="7" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'aptech.dbo.course_module' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity you will need to review your schema, add the correct keys and uncomment it.
+      
+      <EntityType Name="course_module">
+        <Property Name="ccode" Type="varchar" MaxLength="6" />
+        <Property Name="mcode" Type="varchar" MaxLength="7" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'aptech.dbo.issuance' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity you will need to review your schema, add the correct keys and uncomment it.
+      
+      <EntityType Name="issuance">
+        <Property Name="bcode" Type="varchar" MaxLength="7" />
+        <Property Name="scode" Type="int" />
+        <Property Name="issuedate" Type="date" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'aptech.dbo.student_course' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity you will need to review your schema, add the correct keys and uncomment it.
+      
+      <EntityType Name="student_course">
+        <Property Name="scode" Type="int" />
+        <Property Name="ccode" Type="varchar" MaxLength="6" />
+      </EntityType>-->
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="aptechModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="aptechEntities">
+          <EntitySet Name="book_master" EntityType="aptechModel.book_master" />
+          <EntitySet Name="course_master" EntityType="aptechModel.course_master" />
+          <EntitySet Name="module_master" EntityType="aptechModel.module_master" />
+          <EntitySet Name="student_master" EntityType="aptechModel.student_master" />
+        </EntityContainer>
+        <EntityType Name="book_master">
+          <Key>
+            <PropertyRef Name="bcode" />
+          </Key>
+          <Property Name="bcode" Type="String" Nullable="false" MaxLength="7" Unicode="false" FixedLength="false" />
+          <Property Name="title" Type="String" MaxLength="100" Unicode="false" FixedLength="true" />
+          <Property Name="qty" Type="Int32" />
+          <Property Name="ROL" Type="Int32" />
+        </EntityType>
+        <EntityType Name="course_master">
+          <Key>
+            <PropertyRef Name="ccode" />
+          </Key>
+          <Property Name="ccode" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="cname" Type="String" MaxLength="150" Unicode="false" FixedLength="true" />
+          <Property Name="startdate" Type="DateTime" />
+          <Property Name="duration" Type="Int32" />
+        </EntityType>
+        <EntityType Name="module_master">
+          <Key>
+            <PropertyRef Name="mcode" />
+          </Key>
+          <Property Name="mcode" Type="String" Nullable="false" MaxLength="7" Unicode="false" FixedLength="false" />
+          <Property Name="mname" Type="String" MaxLength="100" Unicode="false" FixedLength="true" />
+          <Property Name="comment" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="student_master">
+          <Key>
+            <PropertyRef Name="scode" />
+          </Key>
+          <Property Name="scode" Type="Int32" Nullable="false" />
+          <Property Name="sname" Type="String" MaxLength="200" Unicode="false" FixedLength="true" />
+          <Property Name="contact" Type="Int64" />
+          <Property Name="password" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="invoiceno" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="aptechModelStoreContainer" CdmEntityContainer="aptechEntities">
+          <EntitySetMapping Name="book_master">
+            <EntityTypeMapping TypeName="IsTypeOf(aptechModel.book_master)">
+              <MappingFragment StoreEntitySet="book_master">
+                <ScalarProperty Name="bcode" ColumnName="bcode" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="ROL" ColumnName="ROL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="course_master">
+            <EntityTypeMapping TypeName="IsTypeOf(aptechModel.course_master)">
+              <MappingFragment StoreEntitySet="course_master">
+                <ScalarProperty Name="ccode" ColumnName="ccode" />
+                <ScalarProperty Name="cname" ColumnName="cname" />
+                <ScalarProperty Name="startdate" ColumnName="startdate" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="module_master">
+            <EntityTypeMapping TypeName="IsTypeOf(aptechModel.module_master)">
+              <MappingFragment StoreEntitySet="module_master">
+                <ScalarProperty Name="mcode" ColumnName="mcode" />
+                <ScalarProperty Name="mname" ColumnName="mname" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="student_master">
+            <EntityTypeMapping TypeName="IsTypeOf(aptechModel.student_master)">
+              <MappingFragment StoreEntitySet="student_master">
+                <ScalarProperty Name="scode" ColumnName="scode" />
+                <ScalarProperty Name="sname" ColumnName="sname" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="invoiceno" ColumnName="invoiceno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="aptechModel.book_master" Width="1.5" PointX="0.75" PointY="0.75" Height="1.787985026041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="aptechModel.course_master" Width="1.5" PointX="2.75" PointY="0.75" Height="1.787985026041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="aptechModel.module_master" Width="1.5" PointX="0.75" PointY="3.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="aptechModel.student_master" Width="1.5" PointX="2.75" PointY="3.75" Height="1.9802864583333335" IsExpanded="true" /></Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
